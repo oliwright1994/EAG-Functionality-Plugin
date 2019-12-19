@@ -772,3 +772,12 @@ function eag_validate_user_frontend_fields( $errors ) {
 
 add_filter( 'woocommerce_registration_errors', 'eag_validate_user_frontend_fields', 10 );
 add_filter( 'woocommerce_save_account_details_errors', 'eag_validate_user_frontend_fields', 10 );
+
+/**
+ * Rmove text editor from wc add new product
+ */
+
+function remove_product_editor() {
+  remove_post_type_support( 'product', 'editor' );
+}
+add_action( 'init', 'remove_product_editor' );
